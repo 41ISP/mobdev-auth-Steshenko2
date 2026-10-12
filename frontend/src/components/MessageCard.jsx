@@ -2,6 +2,15 @@ import { useUserStore } from "../store/useUserStore"
 
 const MessageCard = ({ userId, likes, content, username, createdAt }) => {
     const {session} = useUserStore()
+    const handleDelete = () => {
+
+    }
+    const handleReport = () => {
+
+    }
+    const handleLike = () => {
+
+    }
     return (
         <div className="message-card">
             <div className="message-content">{content}</div>
@@ -9,8 +18,11 @@ const MessageCard = ({ userId, likes, content, username, createdAt }) => {
                 <span className="message-author">@{username}</span>
                 <span className="message-time">{createdAt}</span>
             </div>
-            <div className="message-actions">
-                <button className="action-button">
+                <div className="message-actions">
+                    {session?.user && (
+            <>
+                <button onClick={}
+                className="action-button">
                     <span>{likes} 💗🤍</span>
                     <span>Нравится</span>
                 </button>
@@ -18,10 +30,14 @@ const MessageCard = ({ userId, likes, content, username, createdAt }) => {
                     <span>🚩</span>
                     <span>Пожаловаться</span>
                 </button>
-                <button className="action-button delete">
+            </>
+                )}
+
+                {userId=== session?.user.id && <button className="action-button delete">
                     <span>❌</span>
                     <span>Удалить</span>
                 </button>
+                }
             </div>
         </div>
     )
